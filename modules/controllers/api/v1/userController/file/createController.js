@@ -15,7 +15,8 @@ module.exports = new (class createController extends initializeController {
     req.checkBody("format", "فرمت نمیتواند خالی بماند").notEmpty();
     if (this.showValidationErrors(req, res)) return "";
     try {
-
+// https://www.tutorialkart.com/nodejs/create-file-in-nodejs-using-node-fs-module/
+//how to create file with fs nodejs
       const values = {
         userId: req.body.userId,
         title: req.body.title,

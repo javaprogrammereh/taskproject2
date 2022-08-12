@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: "application/json" }));
 app.use(expressValidator());
 app.use(mongoSanitize());
+app.set("view engine", "ejs");
+app.set("views", "views");
 // app.use(express.static(path.join(__dirname, "uploads")));
 
 // farazSMS.init("pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=");
@@ -42,6 +44,8 @@ app.use(mongoSanitize());
 //*routers
 //!   /api/v1/file/create
 //!   /api/v1/file/index/:id
+//!   /api/v1/file/recaptcha
+//!   /api/v1/file/getFile
 app.use("/api/v1", require("./modules/routes/api/user/api-v1"));
 
 //!  /api/v1/superAdmin/auth/register
