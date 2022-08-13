@@ -19,7 +19,7 @@ const fileRouter = express.Router();
 fileRouter.post("/create", createController.create.bind(createController));
 fileRouter.get("/index/:id", indexController.index.bind(indexController));
 fileRouter.get("/recaptcha", recaptchaController.recaptcha.bind(recaptchaController));
-fileRouter.post("/getFile", getFileController.getFile.bind(getFileController));
+fileRouter.post("/getFile/:id", getFileController.getFile.bind(getFileController));
 
 router.use("/file", fileRouter);
 
