@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "096cba4e-00e0-422d-b472-39d884ccaa6e",
+		"name": "taskproject2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7551369"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n          \"name\": \"eli\",\r\n          \"username\": \"eli\",\r\n          \"email\": \"eli@gmail.com\",\r\n          \"password\": \"111\",\r\n          \"mobile\": \"09214247222\",\r\n          \"role\":\"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/superAdmin/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"superAdmin",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n          \"email\": \"admin@gmail.com\",\r\n          \"password\": \"111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/superAdmin/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"superAdmin",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "sms",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c= ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"originator\": \"+9850002\",\r\n  \"recipients\": [\r\n    \"989123456789\",\r\n    \"989125554433\"\r\n  ],\r\n  \"message\": \"ippanel is awesome\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://rest.ippanel.com/v1/messages",
+							"protocol": "http",
+							"host": [
+								"rest",
+								"ippanel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "file",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "32bfe66247d626f6fe7f0a427c7af7faf99eb5238006f65ce919e2b83a2e0997a4e9d243",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"userId\": \"62efea33559fd1cd04319841\",\r\n        \"title\": \"file\",\r\n        \"file\":\"file is create \",\r\n        \"format\":\"txt\",\r\n        \"type\": \"private\",\r\n        \"privateKey\": \"777\",\r\n        \"expiretime\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/file/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"file",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "34bfb66a4dd425a5fe7403477c7af7fca39cb523d502fe5cb716e0eb6a775797a3e9da11",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/file/index/62f7b7624f03f4e9bd4569a4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"file",
+										"index",
+										"62f7b7624f03f4e9bd4569a4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getFile",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "33e2e63613d424f8fe2452477a7af7adf1c9b57ad357fe5cb012e2ea607d0594a5bcd817",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "x-access-token",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"g-recaptcha-response\":\"6LdgGboeAAAAAA7aky02poWt91Cl-yj69_-oEwvB\",\r\n     \"privateKey\": \"777\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/file/getFile/62f7b7624f03f4e9bd4569a4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"file",
+										"getFile",
+										"62f7b7624f03f4e9bd4569a4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
