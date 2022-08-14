@@ -1,6 +1,4 @@
-const fetch = require("node-fetch");
 const { recaptcha } = require("../../../../../helpers/recaptcha");
-const secretTest = process.env.RECAPTCHA_SECRET_TEST;
 
 const initializeController = require("./initializeController");
 
@@ -11,6 +9,10 @@ module.exports = new (class getFileController extends initializeController {
       if (this.showValidationErrors(req, res)) return "";
       const file = await this.model.file.findById(req.params.id).exec();
       if (!file) return this.abort(res, 404, null, "id");
+      const Transform = await this.helper.transform(
+        file,
+        this.helper.itemTransform
+      );
       //*
       if (file.type === "private") {
         const pKey = req.body.privateKey;
@@ -25,15 +27,11 @@ module.exports = new (class getFileController extends initializeController {
       req.body["g-recaptcha-response"],
       req.connection.remoteAddress
     );
-
-    if (response) {
-      console.log("مشکلی در اعتبارسنجی captcha نیست");
-      return this.ok(res, " موفقیت  انجام شد");
-    } else {
-       console.log("error", "مشکلی در اعتبارسنجی captcha هست");
+    if (!response) {
+      console.log("error", "مشکلی در اعتبارسنجی captcha هست");
     }
       //*
-    
+      return this.helper.response(res, null, 200, Transform);
     } catch (err) {
       console.log(err);
       return this.abort(res, 500);

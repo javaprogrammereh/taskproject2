@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
   try {
     const token = await Token.findOne({ token: req.headers["x-access-token"] }).exec();
     if (!token) return unauthorized(res);
-    const user = await User.findOne({ _id: token.userId, role: "admin" }).exec();
+    const user = await User.findOne({ _id: token.userId}).exec();
     if (!user) return unauthorized(res);
     const date = new Date();
     if (token.liveTime < date) {

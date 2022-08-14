@@ -11,7 +11,6 @@ module.exports = new (class indexController extends initializeController {
       sort = { ...sort, _id: -1 };
       const queryData = [{ $match: query }];
       const aggregateData = [
-        { $match: query },
         {
           $project: {
             "file._id": 0,

@@ -31,8 +31,6 @@ module.exports = new (class registerController extends initializeController {
         mobile: req.body.mobile,
       };
       await this.model.user.create(values);
-
-     ///
       return this.ok(res, "با موفقیت اضافه شد");
     } catch (err) {
       console.log(err);

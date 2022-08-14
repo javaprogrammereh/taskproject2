@@ -20,32 +20,41 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: "application/json" }));
 app.use(expressValidator());
 app.use(mongoSanitize());
-app.set("view engine", "ejs");
-app.set("views", "views");
-// app.use(express.static(path.join(__dirname, "uploads")));
 
-// farazSMS.init("pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=");
-///
-// const sendingSms = async () => {
-//   const samplePattern = "jp69a8pvmff7p17";
-//   const result = await farazCreatePattern(samplePattern, "توضیحات", false);
-//   const patternCode = result.data.pattern.code;
-//   console.log("کد الگوی ساخته شده: ", patternCode);
-//   // patternCode = متغیر دربرگیرنده کد الگوی تولید و تایید شده
-//   await farazSendPattern(patternCode, "09112115594", "09214247039", {
-//     name: "elmira",
-//   });
-//   console.log("sending successful");
-//   // await farazSendSMS("متن پیام جهت ارسال", ["09214247039"], "09214247039");
-// };
-// sendingSms();
+farazSMS.init("pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=");
+//http://docs.ippanel.com/#operation/SendSMS
+const sendingSms = async () => {
+  // await farazSendSMS( 'متن پیام جهت ارسال', [ '09214247039' ], '09214247039'  );
+  //*
+//   const samplePattern = `مشترک گرامی %name% عزیز به پنل کاربری خود خوش آمدید.
+//                        www.example-company.com
+//                        نام شرکت`;
+
+// const result = await farazCreatePattern( samplePattern, "توضیحات", false );
+// const patternCode = result.data.pattern.code;
+// console.log( "کد الگوی ساخته شده: ", patternCode );
+//*
+  // const samplePattern = "jp69a8pvmff7p17";
+  // // const samplePattern = `مشترک گرامی %name% عزیز به پنل کاربری خود خوش آمدید.
+  // //                      www.example-company.com
+  // //                      نام شرکت`;
+  // const result = await farazCreatePattern(samplePattern, "توضیحات", false);
+  // const patternCode = result.data.pattern.code;
+  // console.log("کد الگوی ساخته شده: ", patternCode);
+  // // patternCode = متغیر دربرگیرنده کد الگوی تولید و تایید شده
+  // await farazSendPattern(patternCode, "09112115594", "09214247039", {
+  //   name: "elmira",
+  // });
+  // console.log("sending successful");
+  // await farazSendSMS("متن پیام جهت ارسال", ["09214247039"], "09214247039");
+};
+sendingSms();
 
 
 //*routers
 //!   /api/v1/file/create
 //!   /api/v1/file/index/:id
-//!   /api/v1/file/recaptcha
-//!   /api/v1/file/getFile
+//!   /api/v1/file/getFile/:id
 app.use("/api/v1", require("./modules/routes/api/user/api-v1"));
 
 //!  /api/v1/superAdmin/auth/register
