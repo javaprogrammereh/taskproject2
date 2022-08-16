@@ -15,11 +15,14 @@
 						{
 							"name": "register",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n          \"name\": \"eli\",\r\n          \"username\": \"eli\",\r\n          \"email\": \"eli@gmail.com\",\r\n          \"password\": \"111\",\r\n          \"mobile\": \"09214247222\",\r\n          \"role\":\"user\"\r\n}",
+									"raw": "{\r\n          \"name\": \"ali\",\r\n          \"username\": \"ali\",\r\n          \"email\": \"ali@gmail.com\",\r\n          \"password\": \"999\",\r\n          \"mobile\": \"09214247666\",\r\n          \"role\":\"user\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -75,61 +78,80 @@
 					]
 				},
 				{
-					"name": "sms",
-					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": [
-								{
-									"key": "value",
-									"value": "pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=",
-									"type": "string"
+					"name": "otp",
+					"item": [
+						{
+							"name": "sendecode",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "AccessKey pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
 								},
-								{
-									"key": "key",
-									"value": "Authorization",
-									"type": "string"
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/superAdmin/otp/sendcode",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"superAdmin",
+										"otp",
+										"sendcode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "registerorlogin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"smsCode\": \"1024\",\r\n    \"recipient\": \"09214247039\"              \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "in",
-									"value": "header",
-									"type": "string"
+								"url": {
+									"raw": "{{base_url}}/api/v1/superAdmin/otp/registerOrLogin",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"superAdmin",
+										"otp",
+										"registerOrLogin"
+									]
 								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c= ",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"originator\": \"+9850002\",\r\n  \"recipients\": [\r\n    \"989123456789\",\r\n    \"989125554433\"\r\n  ],\r\n  \"message\": \"ippanel is awesome\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://rest.ippanel.com/v1/messages",
-							"protocol": "http",
-							"host": [
-								"rest",
-								"ippanel",
-								"com"
-							],
-							"path": [
-								"v1",
-								"messages"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
@@ -274,6 +296,120 @@
 										"file",
 										"getFile",
 										"62f7b7624f03f4e9bd4569a4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ippanel",
+					"item": [
+						{
+							"name": "sms",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "AccessKey pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c= ",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"originator\": \"+983000505\",\r\n  \"recipients\": [\r\n    \"989364167437\",\r\n    \"989214247039\"\r\n  ],\r\n  \"message\": \"ippanel is awesome\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://rest.ippanel.com/v1/messages",
+									"protocol": "http",
+									"host": [
+										"rest",
+										"ippanel",
+										"com"
+									],
+									"path": [
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "smspatern",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "AccessKey pOfLsNK8ZG1XPFqQj_kjySpSHX9Cu1kTxoob67E8V-c=",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "Authorization",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n   {\r\n   \"pattern_code\": \"jp69a8pvmff7p17\",\r\n   \"originator\": \"+983000505\",\r\n   \"recipient\": \"+989214247039\",\r\n   \"values\": {\r\n      \"otp\": \"elmira\"\r\n  }\r\n}\r\n\r\n\r\n   \r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://rest.ippanel.com/v1/messages/patterns/send",
+									"protocol": "http",
+									"host": [
+										"rest",
+										"ippanel",
+										"com"
+									],
+									"path": [
+										"v1",
+										"messages",
+										"patterns",
+										"send"
 									]
 								}
 							},
