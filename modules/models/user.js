@@ -9,7 +9,7 @@ const userSchema =new Schema({
   mobile: { type: String, unique: true, required: true, trim: true },
   email: { type: String, required: true, unique: true, trim: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ["user", "admin"] },
+  role: { type: String, enum: ["user", "admin","basic"] },
 });
 userSchema.plugin(uniqueValidator);
 userSchema.pre("save",function(next){

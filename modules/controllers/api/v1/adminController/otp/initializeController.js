@@ -6,7 +6,7 @@ const { transform } = require(`${config.path.helper}/transform`);
 const itemTransform = [
   "._id",
   ".smsCode",
-  ".mobile",
+  ".recipient",
   ".mode",
 ];
 

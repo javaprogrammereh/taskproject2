@@ -46,7 +46,7 @@ app.use("/api/v1", require("./modules/routes/api/user/api-v1"));
 //!  /api/v1/superAdmin/auth/register
 //!  /api/v1/superAdmin/auth/login
 //! api/v1/superAdmin/otp/sendcode
-//! api/v1/superAdmin/otp/registerOrLogin
+//! api/v1/superAdmin/auth/registerOrLogin
 app.use("/api/v1/superAdmin", require("./modules/routes/api/admin/api-v1"));
 
 
