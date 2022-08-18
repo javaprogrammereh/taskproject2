@@ -14,5 +14,5 @@ const userSchema =new Schema({
   expiretime:{type:Date, expires: '5d', default:'5d'}
 });
 userSchema.plugin(uniqueValidator);
-userSchema.plugin(URLSlugs('title privateKey', {field: 'slug'}));
+userSchema.plugin(URLSlugs('title', {field: 'slug'}));
 module.exports = mongoose.model("file", userSchema);

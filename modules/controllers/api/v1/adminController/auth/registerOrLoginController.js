@@ -16,11 +16,6 @@ module.exports =
         });
         if (!user) {
           const values = {
-            name: "",
-            mobile: "",
-            email: "",
-            username: "",
-            password: "",
             role: "basic",
           };
           Transform = await this.helper.transform(
