@@ -1,12 +1,16 @@
-const initializeController = require("./initializeController");
 const request = require("request");
+const shortId = require("shortid");
+
+const initializeController = require("./initializeController");
 const otp = require('../../../../../models/otp');
+
 module.exports = new (class sendCodeController extends initializeController {
   async sendCode(req, res,next) {
-      req.checkBody("smsCode", "وارد کردن فیلد الزامیست").notEmpty();
       req.checkBody("recipient", "وارد کردن فیلد الزامیست").notEmpty();
       if (this.showValidationErrors(req, res)) return "";
     try {
+      const code = await shortId.generate();
+      console.log("code is>>>",code);
       await request.post(
         {
             headers: {
@@ -19,7 +23,7 @@ module.exports = new (class sendCodeController extends initializeController {
                 "originator": "+983000505",
                 "recipient": req.body.recipient,
                 "values": {
-                   "otp": "elmira"
+                   "otp":code
                }
              
           },
@@ -29,12 +33,10 @@ module.exports = new (class sendCodeController extends initializeController {
           if (response) {
             console.log(response.body);
             const values = {
-                smsCode: req.body.smsCode,
-                recipient: req.body.recipient,
-                mode: "",
-              };
-              await otp.create(values);
-              console.log("با موفقیت اضافه شد");
+              smsCode: code,
+              recipient: req.body.recipient,
+            };
+            await otp.create(values);
           } else {
             console.log(error);
           }

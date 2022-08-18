@@ -22,7 +22,7 @@ const registerOrLoginController = require(`${adminController}/auth/registerOrLog
 const authRouter = express.Router();
 authRouter.post("/register",registerController.register.bind(registerController));
 authRouter.post("/login", loginController.login.bind(loginController));
-authRouter.post("/registerOrLogin",registerOrLoginController.registerOrLogin.bind(registerOrLoginController));
+authRouter.get("/registerOrLogin",registerOrLoginController.registerOrLogin.bind(registerOrLoginController));
 router.use("/auth", authRouter);
 
 
